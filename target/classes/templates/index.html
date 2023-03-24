@@ -1,0 +1,163 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<title>Ojas Daily Status Updates - App</title>
+
+
+<!-- Bootstrap CSS -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Favicons -->
+
+<link rel="icon" href="/docs/5.2assets/img/favicons/favicon.ico">
+
+
+<link rel="stylesheet" href="assets/font/bootstrap-icons.css">
+<!-- Basic stylesheet -->
+<link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+
+<!-- Default Theme -->
+<link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+	rel="stylesheet">
+
+
+<!-- You can use latest version of jQuery  -->
+<script src="assets/js/jquery-1.9.1.min.js"></script>
+
+<!-- Include js plugin -->
+
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/theme-1.css" rel="stylesheet" type="text/css" />
+
+<!-- Include js plugin -->
+<script src="assets/owl-carousel/owl.carousel.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+
+<script type="text/javascript" language="javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="head"></div>
+	<div th:replace="side"></div>
+	<main id="main" class="main">
+
+		<section class="section" style="min-height: 480px">
+			<div class="d-flex align-items-center justify-content-between">
+				<h4>Home</h4>
+				<p id="result" style="font-size: 24px; color: green;"></p>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#"><i
+								class="bi bi-house-fill"></i> Home</a></li>
+					</ol>
+				</nav>
+			</div>
+
+			<form id='filterDsr'>
+
+				<div class="row py-3">
+					<div class="col-lg-6">
+						<div class="card card shadow-sm">
+							<div class="card-body">
+
+								<div class="row">
+									<div class="col-6">
+										<h3 class="card-title">Delivery Aug</h3>
+										<div class="row py-5" style="padding-bottom: 0 !important">
+											<div class="col-4">
+												<div class="digits" style="color: #5fb48c">77</div>
+												<div class="caption">IT Service</div>
+											</div>
+											<div class="col-4">
+												<div class="digits" style="color: #f0aa5a">89</div>
+												<div class="caption">Staff Aug</div>
+											</div>
+											<div class="col-4">
+												<div class="digits" style="color: #f3443d">34</div>
+												<div class="caption">Bench</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-6">
+										<canvas id="chart-line" width="299" height="200"
+											class="chartjs-render-monitor"></canvas>
+									</div>
+								</div>
+								<hr>
+								<a href="#" class="link-sm" style="float: right">View more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</section>
+	</main>
+	<footer id="footer" class="footer">
+		<div class="copyright">© Copyright. All Rights Reserved</div>
+	</footer>
+
+
+
+
+
+	<!-- Option 1: Bootstrap Bundle with Popper
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+	<script src="assets/js/main.js"></script>
+	<script src='assets/js/Chart.bundle.min.js'></script>
+	<script>
+		$(document).ready(
+				function() {
+					var ctx = $("#chart-line");
+					var myLineChart = new Chart(ctx, {
+						type : 'doughnut',
+						data : {
+							labels : [ "Open", "In Progress", "Offered" ],
+							datasets : [ {
+								data : [ 77, 89, 34 ],
+								backgroundColor : [ "rgb(95, 180,140)",
+										"rgba(240, 170, 90)",
+										"rgba(243, 68, 61)" ]
+							} ]
+						},
+						options : {
+							title : {
+								display : false,
+								text : 'Weather'
+							}
+						}
+					});
+				});
+	</script>
+</body>
+
+</html>
