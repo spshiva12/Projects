@@ -1,0 +1,9 @@
+package com.example.resttemplate2.userservice.service;
+
+public interface UserService {
+
+	User saveUser(User user);
+
+	ResponseDto getUser(Long userId);
+
+}

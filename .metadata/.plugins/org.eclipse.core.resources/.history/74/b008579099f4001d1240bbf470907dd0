@@ -1,0 +1,5 @@
+package com.example.resttemplate.service.controller;
+
+public class DepartmentController {
+
+}
